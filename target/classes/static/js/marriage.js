@@ -12,6 +12,9 @@ angular
 					}).when('/login', {
 						templateUrl : 'js/navigation/login.html',
 						controller : 'navigation'
+					}).when('/start', {
+						templateUrl : 'js/start/start.html',
+						controller : 'start'
 					}).otherwise('/');
 
 					$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
