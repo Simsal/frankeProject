@@ -1,5 +1,5 @@
 angular
-		.module('hello', [ 'ngRoute', 'auth', 'home', 'navigation' ])
+		.module('hello', [ 'ngRoute', 'ui.bootstrap', 'auth', 'home', 'navigation', 'start' ])
 		.config(
 
 				function($routeProvider, $httpProvider, $locationProvider) {
