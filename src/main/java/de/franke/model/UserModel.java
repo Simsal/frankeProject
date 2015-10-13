@@ -1,17 +1,19 @@
 package de.franke.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotEmpty;
-
 
 @Entity
 public class UserModel {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@NotEmpty
 	private String firstName;
@@ -19,7 +21,9 @@ public class UserModel {
 	private String lastName;
 	private String futureLastName;
 	private String marriagePartner;
-	
+	@OneToMany(mappedBy = "user")
+	private List<BudgetModel> budget;
+
 	protected UserModel() {
 	}
 

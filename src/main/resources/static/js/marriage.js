@@ -1,5 +1,5 @@
 angular
-		.module('hello', [ 'ngRoute', 'ui.bootstrap', 'auth', 'home', 'navigation', 'start' ])
+		.module('hello', [ 'ngRoute', 'ui.bootstrap', 'auth', 'home', 'navigation', 'start', 'budget' ])
 		.config(
 
 				function($routeProvider, $httpProvider, $locationProvider) {
@@ -15,6 +15,9 @@ angular
 					}).when('/start', {
 						templateUrl : 'js/start/start.html',
 						controller : 'start'
+					}).when('/budget', {
+						templateUrl : 'js/budget/budget.html',
+						controller : 'budget'
 					}).otherwise('/');
 
 					$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

@@ -1,6 +1,7 @@
 package de.franke.model;
 
 import javax.annotation.Generated;
+import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
@@ -13,6 +14,7 @@ public abstract class UserModel_ {
 	public static volatile SingularAttribute<UserModel, String> futureLastName;
 	public static volatile SingularAttribute<UserModel, Integer> id;
 	public static volatile SingularAttribute<UserModel, String> marriagePartner;
+	public static volatile ListAttribute<UserModel, BudgetModel> budget;
 
 }
 
