@@ -7,5 +7,4 @@ import de.franke.model.BudgetModel;
 
 @RepositoryRestResource(collectionResourceRel="budget", path="budget" )
 public interface BudgetRepository extends CrudRepository<BudgetModel, Integer> {
-
 }
