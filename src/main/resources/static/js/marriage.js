@@ -15,7 +15,7 @@ angular
 					}).when('/start', {
 						templateUrl : 'js/start/start.html',
 						controller : 'start'
-					}).when('/budget', {
+					}).when('/input', {
 						templateUrl : 'js/budget/budget.html',
 						controller : 'budget'
 					}).otherwise('/');

@@ -1,7 +1,14 @@
 
 <button ng-click="standardCategories()">Standard Kategorien</button>
 
-<accordion> 
-<accordion-group heading="{{topic.title}}" ng-repeat="topic in topics">
-{{topic.content}} </accordion-group>
+<accordion> <accordion-group heading="{{topic.title}}"
+	ng-repeat="topic in topics"> {{topic.content}} </accordion-group>
+<button type="button" class="btn btn-default btn-sm"
+	ng-click="addItem()">Add Item</button>
 </accordion>
+<uib-accordion-group heading="Dynamic Body Content">
+<p>The body of the uib-accordion group grows to fit the contents</p>
+<button type="button" class="btn btn-default btn-sm"
+	ng-click="addItem()">Add Item</button>
+<div ng-repeat="topic in topics">{{topic.content}}</div>
+</uib-accordion-group>

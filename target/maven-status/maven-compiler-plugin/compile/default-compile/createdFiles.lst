@@ -1,7 +1,6 @@
 de/franke/service/UserRepository.class
 de/franke/service/BudgetRepository.class
 de/franke/model/UserModel_.class
-de/franke/security/SecurityConfiguration$CsrfHeaderFilter.class
 de/franke/model/BudgetModel_.class
 de/franke/model/MarriageModel_.class
 de/franke/service/UserDetailsService.class

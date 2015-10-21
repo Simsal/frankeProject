@@ -10,6 +10,7 @@ angular.module('budget', [])
 	} ];
 	
 	$scope.standardCategories = function(){
-		$http.post("/budget/save")
+		$scope.topics.push({title : 'hallo',
+							content : '1'})
 	}
 })
