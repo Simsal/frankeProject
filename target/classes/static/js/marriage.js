@@ -1,5 +1,5 @@
 angular
-		.module('hello', [ 'ngRoute', 'ui.bootstrap', 'auth', 'home', 'navigation', 'start', 'budget' ])
+		.module('hello', [ 'ngRoute', 'ui.bootstrap', 'mwl.calendar', 'auth', 'home', 'navigation', 'start', 'budget' ])
 		.config(
 
 				function($routeProvider, $httpProvider, $locationProvider) {
@@ -15,7 +15,7 @@ angular
 					}).when('/start', {
 						templateUrl : 'js/start/start.html',
 						controller : 'start'
-					}).when('/budget', {
+					}).when('/input', {
 						templateUrl : 'js/budget/budget.html',
 						controller : 'budget'
 					}).otherwise('/');
@@ -28,4 +28,13 @@ angular
 			// respectively
 			auth.init('/', '/login', '/logout');
 
+		})
+.config(function(calendarConfigProvider) {
+
+			calendarConfigProvider.setDateFormatter('moment'); // use moment to
+																// format dates
+			moment.locale('de')
+			calendarConfigProvider.setDateFormats({
+				hour : 'HH:mm'
+			});
 		});
