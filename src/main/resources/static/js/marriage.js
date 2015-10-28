@@ -1,5 +1,5 @@
 angular
-		.module('hello', [ 'ngRoute', 'ui.bootstrap', 'mwl.calendar', 'auth', 'home', 'navigation', 'start', 'budget' ])
+		.module('hello', [ 'ngRoute', 'ui.bootstrap', 'mwl.calendar', 'auth', 'home', 'navigation', 'start', 'budget', 'tablePlan', 'guestList' ])
 		.config(
 
 				function($routeProvider, $httpProvider, $locationProvider) {
@@ -18,6 +18,12 @@ angular
 					}).when('/budgetplanung', {
 						templateUrl : 'js/budget/budget.html',
 						controller : 'budget'
+					}).when('/guestlist', {
+						templateUrl : 'js/guestList/guestList.html',
+						controller : 'guestList'
+					}).when('/tischplan', {
+						templateUrl : 'js/tablePlan/tablePlan.html',
+						controller : 'tablePlan'
 					}).otherwise('/');
 
 					$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

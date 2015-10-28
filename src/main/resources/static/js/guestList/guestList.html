@@ -1,0 +1,27 @@
+<table class="table">
+			<tr>
+				<th>Name</th>
+				<th>Straße, Hausnummer</th>
+				<th>Postleitzahl</th>
+				<th>Stadt</th>
+				<th>E-Mail</th>
+				<th>Seite</th>
+				<th>Eingeladen</th>
+			</tr>
+
+			<tr ng-repeat="guest in guests">
+				<td><input type="text" ng-model="guest.name" ng-disabled="isDisabled"></td>
+				<td>{{guest.street}}</td>
+				<td>{{guest.postalCode}}</td>
+				<td>{{guest.town}}</td>
+				<td>{{guest.email}}</td>
+				<td>{{guest.side}}</td>
+				<td>{{guest.invited}}</td>
+				<td nowrap=nowrap><a href="" ng-click=""><i class="glyphicon glyphicon-edit"></i></a>
+					<a href="" ng-click="delete(guest.indexOf(guest), guest)">
+						<i class="glyphicon glyphicon-remove-circle"></i>
+					</a>
+					
+					</td>
+			</tr>
+		</table>

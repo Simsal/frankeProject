@@ -35,6 +35,8 @@ body { padding-top: 70px; }
 					<ul class="nav navbar-nav">
 						<li ng-class="{active:tab('ubersicht')}" ng-show="authenticated()"><a href="/ubersicht">Hochzeitsübersicht</a></li>
 						<li ng-class="{active:tab('budgetplanung')}" ng-show="authenticated()"><a href="/budgetplanung">Budgetplanung</a></li>
+						<li ng-class="{active:tab('guestlist')}" ng-show="authenticated()"><a href="/guestlist">Gästeliste</a></li>
+						<li ng-class="{active:tab('tischplan')}" ng-show="authenticated()"><a href="/tischplan">Tischplan</a></li>
 						<li ng-class="{active:tab('logout')}"ng-show="authenticated()"><a href="" ng-click="logout()">Logout</a></li>
 						<li ng-class="{active:tab('login')}" ng-show="!authenticated()" ng-click="open()">Einloggen</li>
 					</ul>
@@ -52,6 +54,8 @@ body { padding-top: 70px; }
 	<script src="js/navigation/navigation.js" type="text/javascript"></script>
 	<script src="js/start/start.js" type="text/javascript"></script>
 	<script src="js/budget/budget.js" type="text/javascript"></script>
+	<script src="js/tablePlan/tablePlan.js" type="text/javascript"></script>
+	<script src="js/guestList/guestList.js" type="text/javascript"></script>
 	<script src="js/marriage.js" type="text/javascript"></script>
 </body>
 </html>
