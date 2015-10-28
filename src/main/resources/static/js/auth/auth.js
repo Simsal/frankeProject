@@ -21,7 +21,7 @@ angular.module('auth', []).factory(
 
 				loginPath : '/login',
 				logoutPath : '/logout',
-				startPath : '/start',
+				startPath : '/home',
 				homePath : '/',
 				path : $location.path(),
 

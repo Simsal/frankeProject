@@ -12,10 +12,10 @@ angular
 					}).when('/login', {
 						templateUrl : 'js/navigation/login.html',
 						controller : 'navigation'
-					}).when('/start', {
+					}).when('/ubersicht', {
 						templateUrl : 'js/start/start.html',
 						controller : 'start'
-					}).when('/input', {
+					}).when('/budgetplanung', {
 						templateUrl : 'js/budget/budget.html',
 						controller : 'budget'
 					}).otherwise('/');
@@ -26,7 +26,7 @@ angular
 
 			// Initialize auth module with the home page and login/logout path
 			// respectively
-			auth.init('/', '/login', '/logout');
+			auth.init('/home', '/login', '/logout');
 
 		})
 .config(function(calendarConfigProvider) {

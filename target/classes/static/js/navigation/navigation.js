@@ -26,5 +26,5 @@ angular.module('navigation', ['ngRoute', 'auth']).controller(
 			};
 
 			$scope.logout = auth.clear;
-
+			
 		});
