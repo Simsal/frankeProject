@@ -1,6 +1,7 @@
 <table class="table">
 			<tr>
-				<th>Name</th>
+				<th>Vorname</th>
+				<th>Nachname</th>
 				<th>Straße, Hausnummer</th>
 				<th>Postleitzahl</th>
 				<th>Stadt</th>
@@ -10,14 +11,32 @@
 			</tr>
 
 			<tr ng-repeat="guest in guests">
-				<td><input type="text" ng-model="guest.name" ng-disabled="isDisabled"></td>
-				<td>{{guest.street}}</td>
-				<td>{{guest.postalCode}}</td>
-				<td>{{guest.town}}</td>
-				<td>{{guest.email}}</td>
-				<td>{{guest.side}}</td>
-				<td>{{guest.invited}}</td>
-				<td nowrap=nowrap><a href="" ng-click=""><i class="glyphicon glyphicon-edit"></i></a>
+				<td><input type="text" ng-model="guest.firstName" ng-disabled="guest.isDisabled" size="10"></td>
+				<td><input type="text" ng-model="guest.lastName" ng-disabled="guest.isDisabled" size="10"></td>
+				<td><input type="text" ng-model="guest.street" ng-disabled="guest.isDisabled" size="20"></td>
+				<td><input type="text" ng-model="guest.postalCode" ng-disabled="guest.isDisabled" size="6"></td>
+				<td><input type="text" ng-model="guest.town" ng-disabled="guest.isDisabled" size="10"></td>
+				<td><input type="text" ng-model="guest.email" ng-disabled="guest.isDisabled" size="20"></td>
+				<td><input type="text" ng-model="guest.side" ng-disabled="guest.isDisabled" size="6"></td>
+				<td><input type="text" ng-model="guest.invited" ng-disabled="guest.isDisabled"size="5"></td>
+				<td nowrap=nowrap>	<a ng-show="!guest.isDisabled" href="" ng-click="guest.isDisabled=!guest.isDisabled"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+									<a ng-show="guest.isDisabled" href="" ng-click="guest.isDisabled=!guest.isDisabled"><i class="glyphicon glyphicon-edit"></i></a>
+					<a href="" ng-click="delete(guest.indexOf(guest), guest)">
+						<i class="glyphicon glyphicon-remove-circle"></i>
+					</a>
+					
+					</td>
+			</tr>
+			<tr>
+				<td><input type="text" ng-model="newGuest.firstName" size="10"></td>
+				<td><input type="text" ng-model="newGuest.lastName" size="10"></td>
+				<td><input type="text" ng-model="newGuest.street" size="20"></td>
+				<td><input type="text" ng-model="newGuest.postalCode" size="6"></td>
+				<td><input type="text" ng-model="newGuest.town" size="10"></td>
+				<td><input type="text" ng-model="newGuest.email" size="20"></td>
+				<td><input type="text" ng-model="newGuest.side" size="6"></td>
+				<td><input type="text" ng-model="newGuest.invited" size="5"></td>
+				<td nowrap=nowrap><a href=""><i class="glyphicon glyphicon-floppy-disk"></i></a>
 					<a href="" ng-click="delete(guest.indexOf(guest), guest)">
 						<i class="glyphicon glyphicon-remove-circle"></i>
 					</a>
