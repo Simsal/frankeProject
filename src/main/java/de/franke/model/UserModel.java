@@ -29,17 +29,15 @@ public class UserModel {
 	protected UserModel() {
 	}
 
-	public UserModel(int id, String firstName, String lastName,
+	public UserModel(String firstName, String lastName,
 			String userName, String password, String futureLastName,
-			String marriagePartner, List<BudgetModel> budget) {
-		this.id = id;
+			String marriagePartner) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
 		this.futureLastName = futureLastName;
 		this.marriagePartner = marriagePartner;
-		this.budget = budget;
 	}
 
 	public int getId() {
