@@ -2,10 +2,10 @@
 /home/simon/Documents/workspace-sts/marriage/src/main/java/de/franke/service/UserRepository.java
 /home/simon/Documents/workspace-sts/marriage/src/main/java/de/franke/model/MarriageModel.java
 /home/simon/Documents/workspace-sts/marriage/src/main/java/de/franke/service/MarriageRepository.java
-/home/simon/Documents/workspace-sts/marriage/src/main/java/de/franke/service/UserDetailsService.java
 /home/simon/Documents/workspace-sts/marriage/src/main/java/de/franke/controller/NaturalRoutesProvider.java
 /home/simon/Documents/workspace-sts/marriage/src/main/java/de/franke/service/BudgetRepository.java
 /home/simon/Documents/workspace-sts/marriage/src/main/java/de/franke/security/SecurityConfiguration.java
+/home/simon/Documents/workspace-sts/marriage/src/main/java/de/franke/service/UserBuilder.java
 /home/simon/Documents/workspace-sts/marriage/src/main/java/de/franke/model/UserModel.java
 /home/simon/Documents/workspace-sts/marriage/src/main/java/de/franke/MarriageApplication.java
 /home/simon/Documents/workspace-sts/marriage/src/main/java/de/franke/model/BudgetModel.java

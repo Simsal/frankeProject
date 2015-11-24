@@ -19,6 +19,8 @@ public class UserModel {
 	private String firstName;
 	@NotEmpty
 	private String lastName;
+	private String userName;
+	private String password;
 	private String futureLastName;
 	private String marriagePartner;
 	@OneToMany(mappedBy = "user")
@@ -28,12 +30,16 @@ public class UserModel {
 	}
 
 	public UserModel(int id, String firstName, String lastName,
-			String futureLastName, String marriagePartner) {
+			String userName, String password, String futureLastName,
+			String marriagePartner, List<BudgetModel> budget) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.userName = userName;
+		this.password = password;
 		this.futureLastName = futureLastName;
 		this.marriagePartner = marriagePartner;
+		this.budget = budget;
 	}
 
 	public int getId() {
@@ -81,5 +87,33 @@ public class UserModel {
 		return "UserModel [id=" + id + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", futureLastName="
 				+ futureLastName + ", marriagePartner=" + marriagePartner + "]";
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public List<BudgetModel> getBudget() {
+		return budget;
+	}
+
+	public void setBudget(List<BudgetModel> budget) {
+		this.budget = budget;
+	}
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

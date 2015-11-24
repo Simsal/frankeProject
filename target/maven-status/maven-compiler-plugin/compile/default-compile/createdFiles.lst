@@ -4,7 +4,6 @@ de/franke/model/UserModel_.class
 de/franke/controller/NaturalRoutesProvider.class
 de/franke/model/BudgetModel_.class
 de/franke/model/MarriageModel_.class
-de/franke/service/UserDetailsService.class
 de/franke/model/UserModel.class
 de/franke/security/SecurityConfiguration$1.class
 de/franke/MarriageApplication.class

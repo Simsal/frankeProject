@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -22,6 +23,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.WebUtils;
 
+import de.franke.service.UserBuilder;
+
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Value("${spring.security.permittedAuthorities:SecDE-ORG-FD-AIS-SE-Web,SecDE-ORG-FD-AIS-LernlingeStudenten}")
@@ -32,6 +35,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Value("${test.user.password}")
 	private String testPassword;
 
+	private Boolean mockLogin = false;
+	
+	@Autowired
+	private UserBuilder userBuilder;
+	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/css/**", "/js/**", "/fonts/**", "/flags/**");
@@ -74,8 +82,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		if(mockLogin){
 			auth.inMemoryAuthentication().withUser(testUser).password(testPassword)
 			.authorities(permittedAuthorities.split(","));
+		}
+		else{
+			auth.userDetailsService(userBuilder);
+		}
 	}
 
 }
