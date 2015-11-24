@@ -33,10 +33,10 @@ angular.module('auth', []).factory(
 										+ credentials.password)
 					} : {};
 
-					$http.get('user', {
+					$http.get('isUserAuthenticated', {
 						headers : headers
 					}).success(function(data) {
-						if (data.name) {
+						if (data) {
 							auth.authenticated = true;
 						} else {
 							auth.authenticated = false;
