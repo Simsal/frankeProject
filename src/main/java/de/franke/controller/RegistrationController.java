@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,7 +36,7 @@ public class RegistrationController {
 		return password;
 	}
 	
-	@RequestMapping(value = "get/allUserNames", method = RequestMethod.GET)
+	@RequestMapping(value = "/get/allUserNames", method = RequestMethod.GET)
 	public @ResponseBody List<String> getAllUserNames(){
 		List<String> response = new ArrayList<String>();
 		List<UserModel> allUsers = (List<UserModel>) userRepository.findAll();
@@ -45,6 +46,19 @@ public class RegistrationController {
 		}
 		
 		return response;
+	}
+	
+	@RequestMapping(value = "/api/username-exists", method = RequestMethod.GET)
+	public Boolean checkUsername(@RequestParam(value = "u", required=true) String username){
+		Boolean usernameIsAvailable;
+		if(userRepository.findByUserName(username) != null){
+			usernameIsAvailable = false;
+		}
+		else {
+			usernameIsAvailable = true;
+		}
+		
+		return usernameIsAvailable;
 	}
 
 }
