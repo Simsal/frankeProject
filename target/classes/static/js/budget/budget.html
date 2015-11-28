@@ -1,0 +1,9 @@
+
+<button ng-click="standardCategories()">Standard Kategorien</button>
+
+<accordion> <accordion-group heading="{{topic.title}}"
+	ng-repeat="topic in topics"> {{topic.title.content}} 
+	<button type="button" class="btn btn-default btn-sm"
+	ng-click="addItem()">Add Item</button></accordion-group>
+</accordion>
+
