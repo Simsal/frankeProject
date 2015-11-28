@@ -35,7 +35,7 @@ angular
 
 			// Initialize auth module with the home page and login/logout path
 			// respectively
-			auth.init('/home', '/login', '/logout');
+			auth.init('/home', '/login', '/register', '/logout', '/home');
 
 		})
 .config(function(calendarConfigProvider) {

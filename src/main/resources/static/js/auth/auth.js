@@ -4,8 +4,9 @@ angular.module('auth', []).factory(
 		function($rootScope, $http, $location) {
 
 			enter = function() {
-				if($location.path() == auth.startPath){
-					$location.path(auth.startPath);
+				if($location.path() == auth.registerPath){
+					console.log("in enter")
+					$location.path(registerPath);
 				}
 				else if ($location.path() != auth.loginPath) {
 					auth.path = $location.path();
@@ -20,6 +21,7 @@ angular.module('auth', []).factory(
 				authenticated : false,
 
 				loginPath : '/login',
+				registerPath : '/register',
 				logoutPath : '/logout',
 				startPath : '/home',
 				homePath : '/',
@@ -60,11 +62,13 @@ angular.module('auth', []).factory(
 					});
 				},
 
-				init : function(homePath, loginPath, logoutPath) {
+				init : function(homePath, loginPath, registerPath, logoutPath, startPath) {
 
 					auth.homePath = homePath;
 					auth.loginPath = loginPath;
+					auth.registerPath = registerPath;
 					auth.logoutPath = logoutPath;
+					auth.startPath = startPath;
 
 					auth.authenticate({}, function(authenticated) {
 						if (authenticated) {

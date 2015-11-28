@@ -38,7 +38,7 @@ body { padding-top: 70px; }
 						<li ng-class="{active:tab('guestlist')}" ng-show="authenticated()"><a href="/guestlist">Gästeliste</a></li>
 						<li ng-class="{active:tab('tischplan')}" ng-show="authenticated()"><a href="/tischplan">Tischplan</a></li>
 						<li ng-class="{active:tab('logout')}"ng-show="authenticated()"><a href="" ng-click="logout()">Logout</a></li>
-						<li ng-class="{active:tab('login')}" ng-show="!authenticated()" ng-click="open()">Einloggen</li>
+						<li ng-class="{active:tab('login')}" ng-show="!authenticated()"><a href="/login">Einloggen</a></li>
 						<li ng-class="{active:tab('register')}" ng-show="!authenticated()"><a href="/register">Registrieren</a></li>
 					</ul>
 				</div>
