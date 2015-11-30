@@ -5,8 +5,7 @@ angular.module('auth', []).factory(
 
 			enter = function() {
 				if($location.path() == auth.registerPath){
-					console.log("in enter")
-					$location.path(registerPath);
+					$location.path(auth.registerPath);
 				}
 				else if ($location.path() != auth.loginPath) {
 					auth.path = $location.path();
