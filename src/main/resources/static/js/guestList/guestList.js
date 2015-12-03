@@ -7,6 +7,18 @@ angular.module('guestList', []).controller('guestList', function($scope) {
 						isDisabled : true}]
 	$scope.newGuest = {};
 	
+	$scope.saveGuests = function(){
+		
+		$http.post(
+				'/save/newUser',
+				{
+					
+					
+				}
+				
+		)
+	}
+	
 	$scope.delete = function (index, item) {
 //		modalService.showModal({}).then(function (result){
 //		var string = item._links.self.href;
