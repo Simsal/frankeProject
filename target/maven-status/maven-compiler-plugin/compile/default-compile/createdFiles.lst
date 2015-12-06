@@ -2,6 +2,7 @@ de/franke/service/UserRepository.class
 de/franke/service/BudgetRepository.class
 de/franke/model/UserModel_.class
 de/franke/controller/NaturalRoutesProvider.class
+de/franke/model/GuestModel_.class
 de/franke/model/BudgetModel_.class
 de/franke/model/MarriageModel_.class
 de/franke/service/UserBuilder.class

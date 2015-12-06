@@ -41,9 +41,11 @@ public class RessourceController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserModel user = getCurrentlyAuthenticatedUser(auth.getName());
 		String firstName = user.getFirstName();
+		String userId = String.valueOf(user.getId());
 		Map<String, String> userDetailsMap = new TreeMap<>();
 
 		userDetailsMap.put("username", auth.getName());
+		userDetailsMap.put("id", userId);
 		userDetailsMap.put("firstName", firstName);
 		return userDetailsMap;
 	}

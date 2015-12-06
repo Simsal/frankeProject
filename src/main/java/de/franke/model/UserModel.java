@@ -25,6 +25,9 @@ public class UserModel {
 	private String marriagePartner;
 	@OneToMany(mappedBy = "user")
 	private List<BudgetModel> budget;
+	
+	@OneToMany(mappedBy = "user")
+	private List<GuestModel> guests;
 
 	protected UserModel() {
 	}

@@ -13,6 +13,7 @@ public abstract class UserModel_ {
 	public static volatile SingularAttribute<UserModel, String> lastName;
 	public static volatile SingularAttribute<UserModel, String> password;
 	public static volatile SingularAttribute<UserModel, String> futureLastName;
+	public static volatile ListAttribute<UserModel, GuestModel> guests;
 	public static volatile SingularAttribute<UserModel, Integer> id;
 	public static volatile SingularAttribute<UserModel, String> userName;
 	public static volatile SingularAttribute<UserModel, String> marriagePartner;

@@ -1,11 +1,30 @@
-angular.module('guestList', []).controller('guestList', function($scope) {
-	$scope.guests = [{ firstName : 'simon',
-						postalCode : '78954',
-						isDisabled : true},
-					{firstName : 'sarah',
-						postalCode : '78953',
-						isDisabled : true}]
+angular.module('guestList', []).controller('guestList', function($scope, $http) {
+	$scope.guests = [];
 	$scope.newGuest = {};
+	
+	function findAllGuests() {
+		  $http.get('/userDetails/').success(function(data) {
+				$scope.id = data.id;
+				
+				var params = {
+						
+						id : $scope.id
+				};
+					
+				$http.get('/guests/search/findByUserId', {params : params}).success(
+						function(data) {
+							if (data._embedded != undefined) {
+								$scope.guests = angular.fromJson(data._embedded.guests);
+								console.log(data._embedded.guests)
+								console.log($scope.guests)
+							} else {
+								$scope.guests = [];
+							}
+						});
+			})
+			};
+	findAllGuests();
+	
 	
 	$scope.saveGuests = function(){
 		
