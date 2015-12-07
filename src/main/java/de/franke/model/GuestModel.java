@@ -57,16 +57,16 @@ public class GuestModel {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	public String getSecondName() {
+	public String getLastName() {
 		return lastName;
 	}
-	public void setSecondName(String lastName) {
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getAddress() {
+	public String getStreet() {
 		return street;
 	}
-	public void setAddress(String street) {
+	public void setStreet(String street) {
 		this.street = street;
 	}
 	public String getPostalCode() {
