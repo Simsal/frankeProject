@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.validator.constraints.Email;
-
 @Entity
 public class GuestModel {
 
@@ -31,11 +29,9 @@ public class GuestModel {
 	
 	public GuestModel() {
 	}
-	public GuestModel(long id, String firstName, String lastName,
+	public GuestModel(String firstName, String lastName,
 			String street, String postalCode, String town, String email,
-			String marriageSide, Boolean invited) {
-		super();
-		this.id = id;
+			String marriageSide, Boolean invited, UserModel user) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.street = street;
@@ -44,6 +40,7 @@ public class GuestModel {
 		this.email = email;
 		this.marriageSide = marriageSide;
 		this.invited = invited;
+		this.user = user;
 	}
 	public long getId() {
 		return id;
@@ -98,6 +95,12 @@ public class GuestModel {
 	}
 	public void setInvited(Boolean invited) {
 		this.invited = invited;
+	}
+	public UserModel getUser() {
+		return user;
+	}
+	public void setUser(UserModel user) {
+		this.user = user;
 	}
 	
 	

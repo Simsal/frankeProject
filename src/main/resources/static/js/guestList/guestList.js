@@ -1,6 +1,7 @@
-angular.module('guestList', []).controller('guestList', function($scope, $http) {
+angular.module('guestList', []).controller('guestList', function($scope, $http, $filter) {
 	$scope.guests = [];
 	$scope.newGuest = [];
+	$scope.newGuests = [];
 	
 	function findAllGuests() {
 		  $http.get('/userDetails/').success(function(data) {
@@ -15,13 +16,10 @@ angular.module('guestList', []).controller('guestList', function($scope, $http) 
 						function(data) {
 							if (data._embedded != undefined) {
 								$scope.guests = angular.fromJson(data._embedded.guests);
-								console.log(data._embedded.guests)
-								$scope.guests.forEach(function(entry) {
-								    console.log(entry);
-								    entry.isDisabled = true;
+								$scope.guests.forEach(function(guest) {
+								    guest.isDisabled = true;
 								})
-								console.log($scope.guests)
-
+								
 							} else {
 								$scope.guests = [];
 							}
@@ -30,17 +28,38 @@ angular.module('guestList', []).controller('guestList', function($scope, $http) 
 			};
 	findAllGuests();
 	
+	$scope.$watch("guestListForm.$dirty", function(newValue) {
+         console.log($scope.guestListForm.$dirty);
+	});
+	
 	
 	$scope.saveGuests = function(){
+		$scope.newGuests.forEach(function(guest) {
+			console.log(guest)
+			$http.post(
+					'/save/newGuest',
+					{
+						firstName: guest.firstName,
+						lastName: guest.lastName,
+						street: guest.street,
+						postalCode: guest.postalCode,
+						town: guest.town,
+						email: guest.email,
+						marriageSide: guest.marriageSide,
+						invited: guest.invited
+					}
+			).success(function(data, status, headers) {
+				alert("passt")
+			}).error(function(data, status, headers) {
+				alert("error");
+			});
+		})
 		
-		$http.post(
-				'/save/newUser',
-				{
-					
-					
-				}
-				
-		)
+	}
+	
+	$scope.nextUser = function (){
+		$scope.newGuests.push($scope.newGuest);
+		$scope.newGuest = [];
 	}
 	
 	$scope.delete = function (index, item) {
@@ -57,4 +76,4 @@ angular.module('guestList', []).controller('guestList', function($scope, $http) 
 		$scope.guests.splice(index, 1);
     }
 	
-});
+})
