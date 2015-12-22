@@ -58,6 +58,7 @@ angular.module('guestList', []).controller('guestList', function($scope, $http, 
 	}
 	
 	$scope.nextUser = function (){
+		$scope.newGuest.isDisabled = true;
 		$scope.newGuests.push($scope.newGuest);
 		$scope.newGuest = [];
 	}
