@@ -1,15 +1,12 @@
 package de.franke.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.franke.model.UserModel;
@@ -21,16 +18,6 @@ public class RessourceController {
 	@Autowired
 	private UserRepository userRepository;
 
-	@RequestMapping("/resource")
-	@ResponseBody
-	public Map<String, Object> home() {
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("id", UUID.randomUUID().toString());
-		model.put("content", "Hello World");
-		return model;
-	}
-	  
-
 	@RequestMapping("/isUserAuthenticated")
 	public Boolean isUserAuthenticated() {
 		return SecurityContextHolder.getContext().getAuthentication().isAuthenticated();
@@ -41,10 +28,11 @@ public class RessourceController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserModel user = getCurrentlyAuthenticatedUser(auth.getName());
 		String firstName = user.getFirstName();
+		String marriagePartner = user.getMarriagePartner();
 		String userId = String.valueOf(user.getId());
 		Map<String, String> userDetailsMap = new TreeMap<>();
 
-		userDetailsMap.put("username", auth.getName());
+		userDetailsMap.put("marriagePartner", marriagePartner);
 		userDetailsMap.put("id", userId);
 		userDetailsMap.put("firstName", firstName);
 		return userDetailsMap;

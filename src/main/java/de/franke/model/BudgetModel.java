@@ -13,28 +13,34 @@ public class BudgetModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID")
 	private UserModel user;
-	private String description;
-	private float value;
+	private String topic;
+	private String name;
+	private float plannedValue;
+	private float realValue;
+	private Boolean paid;
 
 	public BudgetModel() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public BudgetModel(int id, UserModel user, String description, float value) {
-		this.id = id;
+	public BudgetModel(String topic ,String name, float plannedValue, float realValue, Boolean paid, UserModel user) {
+		this.topic = topic;
+		this.name = name;
+		this.plannedValue = plannedValue;
+		this.realValue = realValue;
+		this.paid = paid;
 		this.user = user;
-		this.description = description;
-		this.value = value;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -46,20 +52,52 @@ public class BudgetModel {
 		this.user = user;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getTopic() {
+		return topic;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setTopic(String topic) {
+		this.topic = topic;
 	}
 
-	public float getValue() {
-		return value;
+	public String getName() {
+		return name;
 	}
 
-	public void setValue(float value) {
-		this.value = value;
+	public void setName(String name) {
+		this.name = name;
 	}
 
+	public float getPlannedValue() {
+		return plannedValue;
+	}
+
+	public void setPlannedValue(float plannedValue) {
+		this.plannedValue = plannedValue;
+	}
+
+	public float getRealValue() {
+		return realValue;
+	}
+
+	public void setRealValue(float realValue) {
+		this.realValue = realValue;
+	}
+
+	public Boolean getPaid() {
+		return paid;
+	}
+
+	public void setPaid(Boolean paid) {
+		this.paid = paid;
+	}
+
+	@Override
+	public String toString() {
+		return "BudgetModel [id=" + id + ", user=" + user + ", topic=" + topic + ", name=" + name + ", plannedValue="
+				+ plannedValue + ", realValue=" + realValue + ", paid=" + paid + "]";
+	}
+
+	
+	
 }

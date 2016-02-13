@@ -1,87 +1,107 @@
 <form name="guestListForm" ng-submit="saveGuests()" role="form">
-	<table class="table">
-		<tr>
-			<th>Vorname</th>
-			<th>Nachname</th>
-			<th>Straße, Hausnummer</th>
-			<th>Postleitzahl</th>
-			<th>Stadt</th>
-			<th>E-Mail</th>
-			<th>Seite</th>
-			<th>Eingeladen</th>
-		</tr>
+	<div class="table-responsive">
+		<table class="table">
+			<tr>
+				<th>Vorname</th>
+				<th>Nachname</th>
+				<th>Straße, Hausnummer</th>
+				<th>Postleitzahl</th>
+				<th>Stadt</th>
+				<th>E-Mail</th>
+				<th>Seite</th>
+				<th>Eingeladen</th>
+			</tr>
 
-		<tr ng-repeat="guest in guests">
-			<td><input type="text" name="firstName_{{$index}}" ng-model="guest.firstName"
-				ng-disabled="guest.isDisabled" size="10"></td>
-			<td><input type="text" name="lastName_{{$index}}" ng-model="guest.lastName"
-				ng-disabled="guest.isDisabled" size="10"></td>
-			<td><input type="text" name="street_{{$index}}" ng-model="guest.street"
-				ng-disabled="guest.isDisabled" size="20"></td>
-			<td><input type="text" name="postalCode_{{$index}}" ng-model="guest.postalCode"
-				ng-disabled="guest.isDisabled" size="6"></td>
-			<td><input type="text" name="town_{{$index}}" ng-model="guest.town"
-				ng-disabled="guest.isDisabled" size="10"></td>
-			<td><input type="text" name="email_{{$index}}" ng-model="guest.email"
-				ng-disabled="guest.isDisabled" size="20"></td>
-			<td><input type="text" name="marriageSide_{{$index}}" ng-model="guest.marriageSide"
-				ng-disabled="guest.isDisabled" size="6"></td>
-			<td><input type="text" name="invited_{{$index}}" ng-model="guest.invited"
-				ng-disabled="guest.isDisabled" size="5"></td>
-			<td nowrap=nowrap><a ng-show="!guest.isDisabled" href=""
-				ng-click="guest.isDisabled=!guest.isDisabled"><i
-					class="glyphicon glyphicon-floppy-disk"></i></a> <a
-				ng-show="guest.isDisabled" href=""
-				ng-click="guest.isDisabled=!guest.isDisabled"><i
-					class="glyphicon glyphicon-edit"></i></a> <a href=""
-				ng-click="delete(guest.indexOf(guest), guest)"> <i
-					class="glyphicon glyphicon-remove-circle"></i>
-			</a></td>
-		</tr>
-		<tr ng-repeat="guest in newGuests">
-			<td><input type="text" name="firstName_{{$index}}" ng-model="guest.firstName"
-				ng-disabled="guest.isDisabled" size="10"></td>
-			<td><input type="text" name="lastName_{{$index}}" ng-model="guest.lastName"
-				ng-disabled="guest.isDisabled" size="10"></td>
-			<td><input type="text" name="street_{{$index}}" ng-model="guest.street"
-				ng-disabled="guest.isDisabled" size="20"></td>
-			<td><input type="text" name="postalCode_{{$index}}" ng-model="guest.postalCode"
-				ng-disabled="guest.isDisabled" size="6"></td>
-			<td><input type="text" name="town_{{$index}}" ng-model="guest.town"
-				ng-disabled="guest.isDisabled" size="10"></td>
-			<td><input type="text" name="email_{{$index}}" ng-model="guest.email"
-				ng-disabled="guest.isDisabled" size="20"></td>
-			<td><input type="text" name="marriageSide_{{$index}}" ng-model="guest.marriageSide"
-				ng-disabled="guest.isDisabled" size="6"></td>
-			<td><input type="text" name="invited_{{$index}}" ng-model="guest.invited"
-				ng-disabled="guest.isDisabled" size="5"></td>
-			<td nowrap=nowrap><a ng-show="!guest.isDisabled" href=""
-				ng-click="guest.isDisabled=!guest.isDisabled"><i
-					class="glyphicon glyphicon-floppy-disk"></i></a> <a
-				ng-show="guest.isDisabled" href=""
-				ng-click="guest.isDisabled=!guest.isDisabled"><i
-					class="glyphicon glyphicon-edit"></i></a> <a href=""
-				ng-click="delete(guest.indexOf(guest), guest)"> <i
-					class="glyphicon glyphicon-remove-circle"></i>
-			</a></td>
-		</tr>
-		<tr>
-			<td><input type="text" ng-model="newGuest.firstName" size="10"></td>
-			<td><input type="text" ng-model="newGuest.lastName" size="10"></td>
-			<td><input type="text" ng-model="newGuest.street" size="20"></td>
-			<td><input type="text" ng-model="newGuest.postalCode" size="6"></td>
-			<td><input type="text" ng-model="newGuest.town" size="10"></td>
-			<td><input type="text" ng-model="newGuest.email" size="20"></td>
-			<td><input type="text" ng-model="newGuest.side" size="6"></td>
-			<td><input type="text" ng-model="newGuest.invited" size="5"></td>
-			<td nowrap=nowrap><a href="" ng-click="nextUser()"><i
-					class="glyphicon glyphicon-floppy-disk"></i></a> <a href=""
-				ng-click="delete(guest.indexOf(guest), guest)"> <i
-					class="glyphicon glyphicon-remove-circle"></i>
-			</a></td>
-		</tr>
-	</table>
+			<tr ng-repeat="guest in guests">
+				<td><input class="form-control" type="text" name="firstName_{{$index}}"
+					ng-model="guest.firstName" ng-disabled="guest.isDisabled" size="10"></td>
+				<td><input class="form-control" type="text" name="lastName_{{$index}}"
+					ng-model="guest.lastName" ng-disabled="guest.isDisabled" size="10"></td>
+				<td><input class="form-control" type="text" name="street_{{$index}}"
+					ng-model="guest.street" ng-disabled="guest.isDisabled" size="20"></td>
+				<td><input class="form-control" type="text" name="postalCode_{{$index}}"
+					ng-model="guest.postalCode" ng-disabled="guest.isDisabled" size="6"></td>
+				<td><input class="form-control" type="text" name="town_{{$index}}"
+					ng-model="guest.town" ng-disabled="guest.isDisabled" size="10"></td>
+				<td><input class="form-control" type="text" name="email_{{$index}}"
+					ng-model="guest.email" ng-disabled="guest.isDisabled" size="20"></td>
+				<td><select class="form-control" ng-model="guest.marriageSide" ng-disabled="guest.isDisabled" value="guest.marriageSide" >
+						<option value="firstName">{{firstName}}</option>
+						<option value="marriagePartner">{{marriagePartner}}</option>
+				</select></td>
+				<td><input class="form-control" type="checkbox" name="invited_{{$index}}"
+					ng-model="guest.invited" ng-disabled="guest.isDisabled" ></td>
+				<td nowrap=nowrap><a ng-show="!guest.isDisabled" href=""
+					ng-click="saveDirty(guests.indexOf(guest), guest)"><i
+						class="glyphicon glyphicon-floppy-disk"></i></a> <a
+					ng-show="guest.isDisabled" href=""
+					ng-click="guest.isDisabled=!guest.isDisabled"><i
+						class="glyphicon glyphicon-edit"></i></a> <a href=""
+					ng-click="delete(guests.indexOf(guest), guest)"> <i
+						class="glyphicon glyphicon-remove-circle"></i>
+				</a></td>
+			</tr>
+			<tr ng-repeat="guest in newGuests">
+				<td><input class="form-control" type="text" name="firstName_{{$index}}"
+					ng-model="guest.firstName" ng-disabled="guest.isDisabled" size="10"></td>
+				<td><input class="form-control" type="text" name="lastName_{{$index}}"
+					ng-model="guest.lastName" ng-disabled="guest.isDisabled" size="10"></td>
+				<td><input class="form-control" type="text" name="street_{{$index}}"
+					ng-model="guest.street" ng-disabled="guest.isDisabled" size="20"></td>
+				<td><input class="form-control" type="text" name="postalCode_{{$index}}"
+					ng-model="guest.postalCode" ng-disabled="guest.isDisabled" size="6"></td>
+				<td><input class="form-control" type="text" name="town_{{$index}}"
+					ng-model="guest.town" ng-disabled="guest.isDisabled" size="10"></td>
+				<td><input class="form-control" type="text" name="email_{{$index}}"
+					ng-model="guest.email" ng-disabled="guest.isDisabled" size="20"></td>
+				<td>
+					<select class="form-control" ng-model="guest.marriageSide" ng-disabled="guest.isDisabled" value="guest.marriageSide" >
+						<option value="firstName">{{firstName}}</option>
+						<option value="marriagePartner">{{marriagePartner}}</option>
+				</select></td> 
+				<td><input class="form-control" type="checkbox" name="invited_{{$index}}"
+					ng-model="guest.invited" ng-disabled="guest.isDisabled"></td>
+				<td nowrap=nowrap><a ng-show="!guest.isDisabled" href=""
+					ng-click="guest.isDisabled=!guest.isDisabled"><i
+						class="glyphicon glyphicon-floppy-disk"></i></a> <a
+					ng-show="guest.isDisabled" href=""
+					ng-click="guest.isDisabled=!guest.isDisabled"><i
+						class="glyphicon glyphicon-edit"></i></a> <a href=""
+					ng-click="delete(guest.indexOf(guest), guest)"> <i
+						class="glyphicon glyphicon-remove-circle"></i>
+				</a></td>
+			</tr>
+			<tr>
+				<td><input class="form-control" type="text"
+					ng-model="newGuest.firstName" size="10"></td>
+				<td><input class="form-control" type="text"
+					ng-model="newGuest.lastName" size="10"></td>
+				<td><input class="form-control" type="text"
+					ng-model="newGuest.street" size="20"></td>
+				<td><input class="form-control" type="text"
+					ng-model="newGuest.postalCode" size="6"></td>
+				<td><input class="form-control" type="text"
+					ng-model="newGuest.town" size="10"></td>
+				<td><input class="form-control" type="text"
+					ng-model="newGuest.email" size="20"></td>
+				<td><select ng-model="newGuest.marriageSide"
+					class="form-control">
+						<option value="firstName">{{firstName}}</option>
+						<option value="marriagePartner">{{marriagePartner}}</option>
+				</select> <!-- 			<input type="text" ng-model="newGuest.marriageSide" size="6"> -->
+				</td>
+				<td><input class="form-control" type="checkbox"
+					ng-model="newGuest.invited" ></td>
+				<td nowrap=nowrap><a href="" ng-click="nextUser()"><i
+						class="glyphicon glyphicon-floppy-disk"></i></a> <a href=""
+					ng-click="delete(guest.indexOf(guest), guest)"> <i
+						class="glyphicon glyphicon-remove-circle"></i>
+				</a></td>
+			</tr>
+		</table>
 		<div class="form-actions">
-       	<button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-primary">Speichern</button>
-        </div>
+			<button type="submit" ng-disabled="form.$invalid || dataLoading"
+				class="btn btn-primary">Speichern</button>
+		</div>
+	</div>
 </form>

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import de.franke.security.SecurityConfiguration;
 
@@ -16,7 +16,7 @@ import de.franke.security.SecurityConfiguration;
 @EnableJpaRepositories
 @Configuration
 @EnableAutoConfiguration
-@EnableWebMvcSecurity
+@EnableWebSecurity
 @ComponentScan
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class MarriageApplication {

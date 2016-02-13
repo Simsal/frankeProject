@@ -1,11 +1,14 @@
-angular.module('guestList', []).controller('guestList', function($scope, $http, $filter) {
+angular.module('guestList', []).controller('guestList', function($scope, $http, $filter, $modal, modalService) {
 	$scope.guests = [];
 	$scope.newGuest = [];
 	$scope.newGuests = [];
+	$scope.dirtyGuests = [];
 	
 	function findAllGuests() {
 		  $http.get('/userDetails/').success(function(data) {
 				$scope.id = data.id;
+				$scope.firstName = data.firstName;
+				$scope.marriagePartner = data.marriagePartner;
 				
 				var params = {
 						
@@ -30,12 +33,53 @@ angular.module('guestList', []).controller('guestList', function($scope, $http, 
 	
 	$scope.$watch("guestListForm.$dirty", function(newValue) {
          console.log($scope.guestListForm.$dirty);
+         console.log($scope.guestListForm.$error);
 	});
+	
+	$scope.saveDirty = function (index, guest) {
+		guest.isDisabled=!guest.isDisabled
+		
+		if($scope.containsGuest(index, $scope.dirtyGuests)){
+			$scope.dirtyGuests.push($scope.guests[index]);
+		}
+	}
+	
+	$scope.containsGuest = function(index, list) {
+		var i;
+	    for (i = 0; i < list.length; i++) {
+	        if (angular.equals(list[i], $scope.guests[index])) {
+	            return false;
+	        }
+	    }
+
+	    return true;
+		}
 	
 	
 	$scope.saveGuests = function(){
+//		if($scope.newGuests.)
+		
+		$scope.dirtyGuests.forEach(function(guest){
+			var string = guest._links.self.href;
+			$scope.helpArray = string.split('/');
+			$scope.itemId = $scope.helpArray[$scope.helpArray.length-1]
+			$http.put('/update/guests/' +$scope.itemId,{
+				firstName: guest.firstName,
+				lastName: guest.lastName,
+				street: guest.street,
+				postalCode: guest.postalCode,
+				town: guest.town,
+				email: guest.email,
+				marriageSide: guest.marriageSide,
+				invited: guest.invited
+			}).success(function(data, status, headers) {
+				alert("passt")
+			}).error(function(data, status, headers) {
+				alert("error");
+			});
+		})
+		
 		$scope.newGuests.forEach(function(guest) {
-			console.log(guest)
 			$http.post(
 					'/save/newGuest',
 					{
@@ -64,17 +108,15 @@ angular.module('guestList', []).controller('guestList', function($scope, $http, 
 	}
 	
 	$scope.delete = function (index, item) {
-//		modalService.showModal({}).then(function (result){
-//		var string = item._links.self.href;
-//		$scope.helpArray = string.split('/');
-//		var helpstring = $scope.helpArray[$scope.helpArray.length-1]
-//		$scope.array = helpstring.split('{')
-//        $http.delete('delete/' + $scope.array[0]).success(function(data, status){
-//        })
-//		
-//		
-//		})
-		$scope.guests.splice(index, 1);
+		modalService.showModal({}).then(function (result){
+		var string = item._links.self.href;
+		$scope.helpArray = string.split('/');
+		$scope.itemId = $scope.helpArray[$scope.helpArray.length-1]
+        $http.delete('delete/guest/' + $scope.itemId).success(function(data, status){
+        	$scope.guests.splice(index, 1);
+        })
+		})
+		
     }
 	
 })

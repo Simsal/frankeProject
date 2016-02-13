@@ -102,6 +102,13 @@ public class GuestModel {
 	public void setUser(UserModel user) {
 		this.user = user;
 	}
+	@Override
+	public String toString() {
+		return "GuestModel [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", street=" + street
+				+ ", postalCode=" + postalCode + ", town=" + town + ", email=" + email + ", marriageSide="
+				+ marriageSide + ", invited=" + invited + ", user=" + user + "]";
+	}
+	
 	
 	
 }

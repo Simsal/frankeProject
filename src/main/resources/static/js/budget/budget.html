@@ -1,9 +1,98 @@
+<div class="jumbotron">
+  {{'BUDGET_HEADING' | translate: translationData}}
+</div>
 
-<button ng-click="standardCategories()">Standard Kategorien</button>
 
-<accordion> <accordion-group heading="{{topic.title}}"
-	ng-repeat="topic in topics"> {{topic.title.content}} 
+<uib-tabset>
+    <uib-tab heading="{{'BUDGET_TAB1' | translate}}">
+    <hr/>
+<form name="budgetForm" ng-submit="saveBudgetItems()" role="form">
+
+<div id = "successSign" uib-collapse="hideSuccess">
+		<div class="well well-lg" ng-style = "{'background-color':'#dff0d8'}">{{'BUDGET_SUCCESS' | translate}}</div>
+</div>
+<div uib-collapse="hideError">
+		<div class=" well well-lg danger" ng-style = "{'background-color':'#EFDBDB'}">{{'BUDGET_ERROR' | translate}}</div>
+</div>
+
+	<uib-accordion close-others="false"> <uib-accordion-group
+		ng-repeat="topic in budgetTopics"> <uib-accordion-heading>{{topic}}
+	<i class="pull-right">{{savedBudgetItems | filter:{topic : topic} |
+		sumOfValue:'realValue' | number:2 }} €</i> </uib-accordion-heading>
+	<table class="table">
+		<tr>
+			<th>{{ 'BUDGET_COL1' | translate }}</th>
+			<th>{{ 'BUDGET_COL2' | translate }}</th>
+			<th>{{ 'BUDGET_COL3' | translate }}</th>
+			<th>{{ 'BUDGET_COL4' | translate }}</th>
+			<th><a ng-show="!allDisabled" href=""
+				ng-click="saveAllDirty(topic)"><i
+					class="glyphicon glyphicon-floppy-disk"></i> {{ 'BUDGET_COL5_1' | translate }}</a> 
+					<a ng-show="allDisabled" href=""
+				ng-click="saveAllDirty(topic)">
+				<i class="glyphicon glyphicon-edit"></i> {{ 'BUDGET_COL5_2' | translate }}</a> </th>
+		</tr>
+		<tr ng-repeat="item in savedBudgetItems" ng-if="topic === item.topic">
+			<td><input class="form-control" type="text"
+				name="name_{{$index}}" ng-model="item.name"
+				ng-disabled="item.isDisabled" size="10"></td>
+			<td><input class="form-control" type="text"
+				name="plannedValue_{{$index}}" ng-model="item.plannedValue"
+				ng-disabled="item.isDisabled" ng-currency></td>
+			<td><input class="form-control" type="text"
+				name="realValue_{{$index}}"
+				ng-model="item.realValue" ng-disabled="item.isDisabled"
+				ng-currency></td>
+			<td><input class="form-control" type="checkbox"
+				name="paid_{{$index}}" ng-model="item.paid"
+				ng-disabled="item.isDisabled" size="10"></td>
+			<td nowrap=nowrap><a ng-show="!item.isDisabled" href=""
+				ng-click="saveDirty(topic.title, item)"><i
+					class="glyphicon glyphicon-floppy-disk"></i></a> 
+					<a ng-show="item.isDisabled" href=""
+				ng-click="saveDirty(topic.title, item)">
+				<i class="glyphicon glyphicon-edit"></i></a> 
+				<a href="" ng-click="delete(savedBudgetItems.indexOf(item), item)"> 
+				<i class="glyphicon glyphicon-remove-circle"></i></a></td>
+		</tr>
+		<tr ng-repeat="item in newBudgetItems" ng-if="topic === item.topic">
+			<td><input class="form-control" type="text"
+				name="name_{{$index}}" ng-model="item.name"
+				ng-disabled="item.isDisabled" size="10"></td>
+			<td><input class="form-control" type="number"
+				name="plannedValue_{{$index}}" ng-model="item.plannedValue"
+				ng-disabled="item.isDisabled" size="10"></td>
+			<td><input class="form-control" type="number"
+				name="realValue_{{$index}}"
+				ng-model="item.realValue" ng-disabled="item.isDisabled"
+				size="10"></td>
+			<td><input class="form-control" type="checkbox"
+				name="paid_{{$index}}" ng-model="item.paid"
+				ng-disabled="item.isDisabled" size="10"></td>
+			<td nowrap=nowrap><a ng-show="!item.isDisabled" href=""
+				ng-click="saveDirty(topic.title, item)"><i
+					class="glyphicon glyphicon-floppy-disk"></i></a> 
+					<a ng-show="item.isDisabled" href=""
+				ng-click="item.isDisabled=!item.isDisabled">
+				<i class="glyphicon glyphicon-edit"></i></a> 
+				<a href="" ng-click="delete(newBudgetItems.indexOf(item), item)"> 
+				<i class="glyphicon glyphicon-remove-circle"></i></a></td>
+		</tr>
+	</table>
 	<button type="button" class="btn btn-default btn-sm"
-	ng-click="addItem()">Add Item</button></accordion-group>
-</accordion>
+		ng-click="addItem(topic)">{{ 'BUDGET_ADDITEM' | translate }}</button>
+	</uib-accordion-group> </uib-accordion>
+	<div class="form-actions">
+		<button type="submit" ng-disabled="form.$invalid || dataLoading"
+			class="btn btn-primary">{{ 'BUDGET_SAVE' | translate }}</button>
+	</div>
 
+</form>
+</uib-tab>
+<uib-tab heading="{{'BUDGET_TAB2' | translate}}">
+<hr/>
+		{{savedBudgetItems | sumOfValue:'realValue' | number:2 }} €
+		{{savedBudgetItems | sumOfValue:'plannedValue' | number:2 }} €
+	
+</uib-tab>
+  </uib-tabset>
