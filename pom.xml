@@ -21,7 +21,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<wro4j.version>1.7.6</wro4j.version>
+		<wro4j.version>1.7.9</wro4j.version>
 	</properties>
 
 	<dependencies>
@@ -50,13 +50,13 @@
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>angularjs</artifactId>
-			<version>1.3.8</version>
+			<version>1.5.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jasmine</artifactId>
-			<version>2.0.0</version>
+			<version>2.2.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -144,7 +144,7 @@
 					<dependency>
 						<groupId>org.webjars</groupId>
 						<artifactId>jquery</artifactId>
-						<version>2.1.1</version>
+						<version>2.2.0</version>
 					</dependency>
 					<dependency>
 						<groupId>org.webjars</groupId>
@@ -154,7 +154,7 @@
 					<dependency>
 						<groupId>org.webjars</groupId>
 						<artifactId>bootstrap</artifactId>
-						<version>3.3.5</version>
+						<version>3.3.6</version>
 					</dependency>
 					<dependency>
 						<groupId>org.webjars</groupId>
@@ -164,54 +164,59 @@
 					<dependency>
 						<groupId>org.webjars.bower</groupId>
 						<artifactId>angular-bootstrap-calendar</artifactId>
-						<version>0.15.3</version>
+						<version>0.18.1</version>
 					</dependency>
 					<dependency>
-						<groupId>org.webjars</groupId>
+						<groupId>org.webjars.bower</groupId>
 						<artifactId>momentjs</artifactId>
-						<version>2.10.3</version>
+						<version>2.11.2</version>
 					</dependency>
 					<dependency>
-						<groupId>org.webjars</groupId>
+						<groupId>org.webjars.bower</groupId>
 						<artifactId>angular-translate</artifactId>
-						<version>2.8.1</version>
+						<version>2.9.0</version>
+					</dependency>
+					<dependency>
+						<groupId>org.webjars.bower</groupId>
+						<artifactId>ng-currency</artifactId>
+						<version>0.9.2</version>
 					</dependency>
 				</dependencies>
 			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>com.github.searls</groupId> -->
-			<!-- <artifactId>jasmine-maven-plugin</artifactId> -->
-			<!-- <version>2.0-alpha-01</version> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <goals> -->
-			<!-- <goal>test</goal> -->
-			<!-- </goals> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- <configuration> -->
-			<!-- <additionalContexts> -->
-			<!-- <context> -->
-			<!-- <contextRoot>/lib</contextRoot> -->
-			<!-- <directory>${project.build.directory}/generated-resources/static/js</directory> -->
-			<!-- </context> -->
-			<!-- </additionalContexts> -->
-			<!-- <preloadSources> -->
-			<!-- <source>/lib/angular-bootstrap.js</source> -->
-			<!-- <source>/webjars/angularjs/1.3.8/angular-mocks.js</source> -->
-			<!-- </preloadSources> -->
-			<!-- <jsSrcDir>${project.basedir}/src/main/resources/static/js</jsSrcDir> -->
-			<!-- <jsTestSrcDir>${project.basedir}/src/test/resources/static/js</jsTestSrcDir> -->
-			<!-- <webDriverClassName>org.openqa.selenium.phantomjs.PhantomJSDriver</webDriverClassName> -->
-			<!-- </configuration> -->
-			<!-- <dependencies> -->
-			<!-- <dependency> -->
-			<!-- <groupId>org.webjars</groupId> -->
-			<!-- <artifactId>angularjs</artifactId> -->
-			<!-- <version>1.3.8</version> -->
-			<!-- </dependency> -->
-			<!-- </dependencies> -->
-			<!-- </plugin> -->
+			<plugin>
+				<groupId>com.github.searls</groupId>
+				<artifactId>jasmine-maven-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<additionalContexts>
+						<context>
+							<contextRoot>/lib</contextRoot>
+							<directory>${project.build.directory}/generated-resources/static/js</directory>
+						</context>
+					</additionalContexts>
+					<preloadSources>
+						<source>/lib/angular-bootstrap.js</source>
+						<source>/webjars/angularjs/1.5.0/angular-mocks.js</source>
+					</preloadSources>
+					<jsSrcDir>${project.basedir}/src/main/resources/static/js</jsSrcDir>
+					<jsTestSrcDir>${project.basedir}/src/test/resources/static/js</jsTestSrcDir>
+					<!-- <webDriverClassName>org.openqa.selenium.phantomjs.PhantomJSDriver</webDriverClassName> -->
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.webjars</groupId>
+						<artifactId>angularjs</artifactId>
+						<version>1.5.0</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 	</build>
 

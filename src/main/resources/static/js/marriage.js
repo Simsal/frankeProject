@@ -43,14 +43,12 @@ angular
 			auth.init('/home', '/login', '/register', '/logout', '/home');
 
 		})
-		.config(function(calendarConfigProvider) {
+		.config(function(calendarConfig) {
 
-			calendarConfigProvider.setDateFormatter('moment'); // use moment to
+			calendarConfig.dateFormatter = 'moment';; // use moment to
 			// format dates
 			moment.locale('de')
-			calendarConfigProvider.setDateFormats({
-				hour : 'HH:mm'
-			});
+			calendarConfig.allDateFormats.moment.date.hour = 'HH:mm';
 		}).config(
 				function($translateProvider) {
 					// deutsche Sprache
@@ -136,15 +134,15 @@ angular
 
 								if (!tempModalDefaults.controller) {
 									tempModalDefaults.controller = function(
-											$scope, $modalInstance) {
+											$scope, $uibModalInstance) {
 										$scope.modalOptions = tempModalOptions;
 										$scope.modalOptions.ok = function(
 												result) {
-											$modalInstance.close(result);
+											$uibModalInstance.close(result);
 										};
 										$scope.modalOptions.close = function(
 												result) {
-											$modalInstance.dismiss('cancel');
+											$uibModalInstance.dismiss('cancel');
 										};
 									}
 								}

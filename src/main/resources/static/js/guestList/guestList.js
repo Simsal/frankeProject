@@ -1,4 +1,4 @@
-angular.module('guestList', []).controller('guestList', function($scope, $http, $filter, $modal, modalService) {
+angular.module('guestList', []).controller('guestList', function($scope, $http, $filter, $uibModal, modalService) {
 	$scope.guests = [];
 	$scope.newGuest = [];
 	$scope.newGuests = [];
