@@ -3,7 +3,7 @@ angular
 				'hello',
 				[ 'ngRoute', 'ui.bootstrap', 'mwl.calendar', 'pascalprecht.translate', 'ng-currency', 'auth', 'home',
 						'navigation', 'start', 'budget', 'tablePlan',
-						'guestList', 'register' ])
+						'guestList', 'register', 'dialog' ])
 		.config(
 
 				function($routeProvider, $httpProvider, $locationProvider) {
@@ -63,6 +63,8 @@ angular
 										BUDGET_COL2 : 'Geplanter Preis',
 										BUDGET_COL3 : 'Tatsächlicher Preis',
 										BUDGET_COL4 : 'Erledigt',
+										BUDGET_PROVIDER : 'Dienstleister',
+										BUDGET_DETAILS : 'Weitere Informationen',
 										BUDGET_ADDITEM : 'Neuer Posten',
 										BUDGET_SAVE : 'Speichern',
 										BUDGET_COL5_1 : 'Alle',
@@ -84,6 +86,8 @@ angular
 										BUDGET_COL2 : 'Planned Value',
 										BUDGET_COL3 : 'Real Value',
 										BUDGET_COL4 : 'Done',
+										BUDGET_PROVIDER : 'Service provider',
+										BUDGET_DETAILS : 'Additional Information',
 										BUDGET_ADDITEM : 'New Item',
 										BUDGET_SAVE : 'Save',
 										BUDGET_COL5_1 : 'All',

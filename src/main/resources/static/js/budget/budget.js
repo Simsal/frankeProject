@@ -37,7 +37,8 @@ angular.module('budget', [])
 												paid: obj.paid,
 												topic : obj.topic,
 												id: $scope.itemId,
-												isDisabled : true})  
+												isDisabled : true,
+												showDetails : false})  
 								})
 							} 
 						});
@@ -167,6 +168,33 @@ angular.module('budget', [])
 		}
 		
 		$scope.allDisabled = !$scope.allDisabled;
+	}
+	
+	$scope.openDialog = function(item, number) {
+
+		if(number === 0){
+			var uibModalInstance = $uibModal.open({
+	            templateUrl: 'js/dialog/provider.html',
+	            controller: 'provider',
+	            resolve: {
+	                item: function () {
+	                    return item;
+	                }
+	            }
+	        });
+		}
+		if(number === 1){
+			var uibModalInstance = $uibModal.open({
+	            templateUrl: 'js/dialog/details.html',
+	            controller: 'details',
+	            resolve: {
+	                item: function () {
+	                    return item;
+	                }
+	            }
+	        });
+		}
+		
 	}
 	}).filter('sumOfValue',	function() {
 				return function(data, key) {

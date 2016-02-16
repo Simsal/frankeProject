@@ -32,7 +32,8 @@
 				ng-click="saveAllDirty(topic)">
 				<i class="glyphicon glyphicon-edit"></i> {{ 'BUDGET_COL5_2' | translate }}</a> </th>
 		</tr>
-		<tr ng-repeat="item in savedBudgetItems" ng-if="topic === item.topic">
+		
+		<tr ng-repeat-start="item in savedBudgetItems" ng-if="topic === item.topic">
 			<td><input class="form-control" type="text"
 				name="name_{{$index}}" ng-model="item.name"
 				ng-disabled="item.isDisabled" size="10"></td>
@@ -53,7 +54,18 @@
 				ng-click="saveDirty(topic.title, item)">
 				<i class="glyphicon glyphicon-edit"></i></a> 
 				<a href="" ng-click="delete(savedBudgetItems.indexOf(item), item)"> 
-				<i class="glyphicon glyphicon-remove-circle"></i></a></td>
+				<i class="glyphicon glyphicon-remove-circle"></i></a>
+				<a href="" ng-click="item.showDetails = !item.showDetails"><span ng-show="!item.showDetails"
+						class="glyphicon glyphicon-chevron-down"></span> <span
+						ng-show="item.showDetails"
+						class="glyphicon glyphicon-chevron-right"></span></a></td>
+		</tr>
+		<tr ng-repeat-end ng-show="item.showDetails">
+			<td></td>
+			<td>
+			<button type="button" ng-click="openDialog(item, 0)" class="btn btn-default btn-sm">{{ 'BUDGET_PROVIDER' | translate }}</button>
+			<td><button type="button" ng-click="openDialog(item, 1)" class="btn btn-default btn-sm">{{ 'BUDGET_DETAILS' | translate }}</button>
+				</td>
 		</tr>
 		<tr ng-repeat="item in newBudgetItems" ng-if="topic === item.topic">
 			<td><input class="form-control" type="text"

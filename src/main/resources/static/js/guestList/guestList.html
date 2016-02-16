@@ -3,18 +3,14 @@
 		<table class="table">
 			<tr>
 				<th>Vorname</th>
-				<th><uib-tabset><uib-tab heading="Static title">Static content</uib-tab></uib-tabset></th>
-				<th>Straße, Hausnummer</th>
-				<th>Postleitzahl</th>
-				<th>Stadt</th>
-				<th>E-Mail</th>
-				<th>Seite</th>
-				<th>Eingeladen</th>
+				
 			</tr>
 
 			<tr ng-repeat="guest in guests">
 				<td><input class="form-control" type="text" name="firstName_{{$index}}"
 					ng-model="guest.firstName" ng-disabled="guest.isDisabled" size="10"></td>
+				</tr>	
+					
 				<td><input class="form-control" type="text" name="lastName_{{$index}}"
 					ng-model="guest.lastName" ng-disabled="guest.isDisabled" size="10"></td>
 				<td><input class="form-control" type="text" name="street_{{$index}}"
@@ -40,7 +36,7 @@
 					ng-click="delete(guests.indexOf(guest), guest)"> <i
 						class="glyphicon glyphicon-remove-circle"></i>
 				</a></td>
-			</tr>
+			
 			<tr ng-repeat="guest in newGuests">
 				<td><input class="form-control" type="text" name="firstName_{{$index}}"
 					ng-model="guest.firstName" ng-disabled="guest.isDisabled" size="10"></td>
@@ -105,3 +101,13 @@
 		</div>
 	</div>
 </form>
+
+
+
+<th><uib-tabset><uib-tab heading="Static title">Static content</uib-tab></uib-tabset></th>
+				<th>Straße, Hausnummer</th>
+				<th>Postleitzahl</th>
+				<th>Stadt</th>
+				<th>E-Mail</th>
+				<th>Seite</th>
+				<th>Eingeladen</th>
