@@ -22,17 +22,21 @@ public class BudgetModel {
 	private float plannedValue;
 	private float realValue;
 	private Boolean paid;
+	private String serviceProviderName;
+	private String serviceProviderInformation;
 
 	public BudgetModel() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BudgetModel(String topic ,String name, float plannedValue, float realValue, Boolean paid, UserModel user) {
+	public BudgetModel(String topic ,String name, float plannedValue, float realValue, Boolean paid, String serviceProviderName, String serviceProviderInformation, UserModel user) {
 		this.topic = topic;
 		this.name = name;
 		this.plannedValue = plannedValue;
 		this.realValue = realValue;
 		this.paid = paid;
+		this.serviceProviderName = serviceProviderName;
+		this.serviceProviderInformation = serviceProviderInformation;
 		this.user = user;
 	}
 
@@ -92,10 +96,30 @@ public class BudgetModel {
 		this.paid = paid;
 	}
 
+	public String getServiceProviderName() {
+		return serviceProviderName;
+	}
+
+	public void setServiceProviderName(String serviceProviderName) {
+		this.serviceProviderName = serviceProviderName;
+	}
+
+	public String getServiceProviderInformation() {
+		return serviceProviderInformation;
+	}
+
+	public void setServiceProviderInformation(String serviceProviderInformation) {
+		this.serviceProviderInformation = serviceProviderInformation;
+	}
+
 	@Override
 	public String toString() {
-		return "BudgetModel [id=" + id + ", user=" + user + ", topic=" + topic + ", name=" + name + ", plannedValue="
-				+ plannedValue + ", realValue=" + realValue + ", paid=" + paid + "]";
+		return "BudgetModel [id=" + id + ", user=" + user + ", topic=" + topic
+				+ ", name=" + name + ", plannedValue=" + plannedValue
+				+ ", realValue=" + realValue + ", paid=" + paid
+				+ ", serviceProviderName=" + serviceProviderName
+				+ ", serviceProviderInformation=" + serviceProviderInformation
+				+ "]";
 	}
 
 	

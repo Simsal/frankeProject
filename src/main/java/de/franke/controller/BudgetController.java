@@ -28,6 +28,8 @@ public class BudgetController {
 												budget.getPlannedValue(),
 												budget.getRealValue(),
 												budget.getPaid(),
+												budget.getServiceProviderName(),
+												budget.getServiceProviderInformation(),
 												userRepository.findByUserName(getCurrentlyAuthenticatedUserId())));
 		
 	}
@@ -46,6 +48,8 @@ public class BudgetController {
 		oldBudgetItem.setPlannedValue(budgetItem.getPlannedValue());
 		oldBudgetItem.setRealValue(budgetItem.getRealValue());
 		oldBudgetItem.setPaid(budgetItem.getPaid());
+		oldBudgetItem.setServiceProviderName(budgetItem.getServiceProviderName());
+		oldBudgetItem.setServiceProviderInformation(budgetItem.getServiceProviderInformation());
 		budgetRepository.save(oldBudgetItem);
 	}
 
