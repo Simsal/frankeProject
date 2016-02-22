@@ -23,9 +23,9 @@
 -- Table structure for table `budget_model`
 --
 
-ALTER TABLE `budget_model` 
-  ADD `service_provider_name` varchar(255) DEFAULT NULL
-  
-  
 
+  
+  
+ ALTER TABLE `budget_model` 
+  ADD `service_provider_information` varchar(255) DEFAULT NULL
 
