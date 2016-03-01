@@ -17,8 +17,12 @@ angular.module('dialog', []).controller(
 			
 			$scope.item = item;
 			
-			$scope.close = function(){
-				$uibMmodalInstance.close();
-			}
+			$scope.ok = function () {
+			    $uibModalInstance.close($scope.item);
+			  };
+
+			  $scope.cancel = function () {
+			    $uibModalInstance.dismiss('cancel');
+			  };
 			
 		}])

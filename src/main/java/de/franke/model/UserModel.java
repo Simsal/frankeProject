@@ -29,6 +29,9 @@ public class UserModel {
 	@OneToMany(mappedBy = "user")
 	private List<GuestModel> guests;
 
+	@OneToMany(mappedBy = "user")
+	private List<ProviderModel> provider;
+	
 	protected UserModel() {
 	}
 

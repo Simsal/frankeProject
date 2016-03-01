@@ -3,8 +3,6 @@
 </div>
 
 
-<uib-tabset>
-    <uib-tab heading="{{'BUDGET_TAB1' | translate}}">
     <hr/>
 <form name="budgetForm" ng-submit="saveBudgetItems()" role="form">
 
@@ -17,8 +15,11 @@
 
 	<uib-accordion close-others="false"> <uib-accordion-group
 		ng-repeat="topic in budgetTopics"> <uib-accordion-heading>{{topic}}
-	<i class="pull-right">{{savedBudgetItems | filter:{topic : topic} |
-		sumOfValue:'realValue' | number:2 }} €</i> </uib-accordion-heading>
+		
+	<i class="pull-right">Preis: {{savedBudgetItems | filter:{topic : topic} |
+		sumOfValue:'realValue' | number:2 }} €</i>
+		</uib-accordion-heading>
+<div class="table-responsive">
 	<table class="table">
 		<tr>
 			<th>{{ 'BUDGET_COL1' | translate }}</th>
@@ -91,6 +92,7 @@
 				<i class="glyphicon glyphicon-remove-circle"></i></a></td>
 		</tr>
 	</table>
+</div>
 	<button type="button" class="btn btn-default btn-sm"
 		ng-click="addItem(topic)">{{ 'BUDGET_ADDITEM' | translate }}</button>
 	</uib-accordion-group> </uib-accordion>
@@ -100,11 +102,3 @@
 	</div>
 
 </form>
-</uib-tab>
-<uib-tab heading="{{'BUDGET_TAB2' | translate}}">
-<hr/>
-		{{savedBudgetItems | sumOfValue:'realValue' | number:2 }} €
-		{{savedBudgetItems | sumOfValue:'plannedValue' | number:2 }} €
-	
-</uib-tab>
-  </uib-tabset>
