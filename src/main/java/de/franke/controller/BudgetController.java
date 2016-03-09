@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import de.franke.model.BudgetModel;
 import de.franke.service.BudgetRepository;
+import de.franke.service.ProviderRepository;
 import de.franke.service.UserRepository;
 
 @RestController
@@ -20,6 +21,8 @@ public class BudgetController {
 	private BudgetRepository budgetRepository;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private ProviderRepository providerRepository;
 	
 	@RequestMapping(value="/save/newBudgetItem", method = RequestMethod.POST)
 	public @ResponseBody void saveItem(@RequestBody BudgetModel budget) {
@@ -28,8 +31,7 @@ public class BudgetController {
 												budget.getPlannedValue(),
 												budget.getRealValue(),
 												budget.getPaid(),
-												budget.getServiceProviderName(),
-												budget.getServiceProviderInformation(),
+												budget.getProvider(),
 												userRepository.findByUserName(getCurrentlyAuthenticatedUserId())));
 		
 	}
@@ -48,8 +50,7 @@ public class BudgetController {
 		oldBudgetItem.setPlannedValue(budgetItem.getPlannedValue());
 		oldBudgetItem.setRealValue(budgetItem.getRealValue());
 		oldBudgetItem.setPaid(budgetItem.getPaid());
-		oldBudgetItem.setServiceProviderName(budgetItem.getServiceProviderName());
-		oldBudgetItem.setServiceProviderInformation(budgetItem.getServiceProviderInformation());
+		oldBudgetItem.setProvider(budgetItem.getProvider());
 		budgetRepository.save(oldBudgetItem);
 	}
 

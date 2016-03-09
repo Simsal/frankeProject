@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class BudgetModel {
@@ -17,26 +18,26 @@ public class BudgetModel {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID")
 	private UserModel user;
+	@OneToOne
+	@JoinColumn(name = "PROVIDER_ID")
+	private ProviderModel provider;
 	private String topic;
 	private String name;
 	private float plannedValue;
 	private float realValue;
 	private Boolean paid;
-	private String serviceProviderName;
-	private String serviceProviderInformation;
 
 	public BudgetModel() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BudgetModel(String topic ,String name, float plannedValue, float realValue, Boolean paid, String serviceProviderName, String serviceProviderInformation, UserModel user) {
+	public BudgetModel(String topic ,String name, float plannedValue, float realValue, Boolean paid, ProviderModel provider, UserModel user) {
 		this.topic = topic;
 		this.name = name;
 		this.plannedValue = plannedValue;
 		this.realValue = realValue;
 		this.paid = paid;
-		this.serviceProviderName = serviceProviderName;
-		this.serviceProviderInformation = serviceProviderInformation;
+		this.provider = provider;
 		this.user = user;
 	}
 
@@ -96,32 +97,20 @@ public class BudgetModel {
 		this.paid = paid;
 	}
 
-	public String getServiceProviderName() {
-		return serviceProviderName;
+	public ProviderModel getProvider() {
+		return provider;
 	}
 
-	public void setServiceProviderName(String serviceProviderName) {
-		this.serviceProviderName = serviceProviderName;
-	}
-
-	public String getServiceProviderInformation() {
-		return serviceProviderInformation;
-	}
-
-	public void setServiceProviderInformation(String serviceProviderInformation) {
-		this.serviceProviderInformation = serviceProviderInformation;
+	public void setProvider(ProviderModel provider) {
+		this.provider = provider;
 	}
 
 	@Override
 	public String toString() {
-		return "BudgetModel [id=" + id + ", user=" + user + ", topic=" + topic
-				+ ", name=" + name + ", plannedValue=" + plannedValue
-				+ ", realValue=" + realValue + ", paid=" + paid
-				+ ", serviceProviderName=" + serviceProviderName
-				+ ", serviceProviderInformation=" + serviceProviderInformation
-				+ "]";
+		return "BudgetModel [id=" + id + ", user=" + user + ", provider="
+				+ provider + ", topic=" + topic + ", name=" + name
+				+ ", plannedValue=" + plannedValue + ", realValue=" + realValue
+				+ ", paid=" + paid + "]";
 	}
 
-	
-	
 }
