@@ -2,10 +2,58 @@
 	<h3 class="modal-title">Dienstleister für {{item.name}}</h3>
 </div>
 <div class="modal-body">
+ <form name="form" ng-submit="ok()" role="form">
+<uib-tabset>
+<uib-tab heading="Name und Kontaktdaten">
+<div class="form-group">
 	<label for="provider.name">Name:</label> <input id="provider.name"
-		ng-model="provider.name">
+		ng-model="provider.name" class="form-control">
+	</div>
+	<div class="form-group">
+	<label for="provider.email">Email:</label> <input id="provider.email"
+		ng-model="provider.email" class="form-control">
+	</div>
+	<div class="form-group">
+	<label for="provider.mobilephone">Handynummer:</label> <input id="provider.mobilephone"
+		ng-model="provider.mobilephone" class="form-control">
+	</div>
+	<div class="form-group">
+	<label for="provider.telephone">Telephonnummer:</label> <input id="provider.telephone"
+		ng-model="provider.telephone" class="form-control">
+	</div>
+	<div class="form-group">
+	<label for="provider.comments">Anmerkungen:</label> <textarea id="provider.comments"
+		ng-model="provider.comments" class="form-control"></textarea>
+	</div>
+</uib-tab>
+<uib-tab heading="Adresse">
+<div class="form-group">	
+	<label for="provider.postalCode">Postleitzahl:</label> <input id="provider.postalCode"
+		ng-model="provider.postalCode" class="form-control">
+	</div>
+	<div class="form-group">
+	<label for="provider.street">Straße und Hausnummer:</label> <input id="provider.street"
+		ng-model="provider.street" class="form-control">
+	</div>
+	<div class="form-group">
+	<label for="provider.town">Stadt:</label> <input id="provider.town"
+		ng-model="provider.town" class="form-control">
+	</div>
+	<div class="form-group">
+	<label for="provider.comments">Anmerkungen:</label> <textarea id="provider.comments"
+		ng-model="provider.comments" class="form-control"></textarea>
+	</div>
+
+</uib-tab>
+<uib-tab heading="Termine">
+<p>
+Neues Model für Termine enfügen. Sowohl vergangene als auch kommende hier anzeigen.
+</p>
+</uib-tab>
+</uib-tabset>
+</form>
 </div>
 <div class="modal-footer">
-	<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+	<button class="btn btn-primary" type="submit" ng-click="ok()">OK</button>
 	<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 </div>

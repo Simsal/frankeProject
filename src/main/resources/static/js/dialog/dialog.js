@@ -16,35 +16,56 @@ angular.module('dialog', []).controller(
 				function($scope, $uibModalInstance, item, $http) {
 			
 			$scope.item = item;
+			$scope.provider = {
+					name		:	"",
+					street		:	"",
+					postalCode	:	"",
+					town		:	"",
+					email		:	"",
+					telephone	:	"",
+					mobilephone	:	"",
+					comment		:	""
+					
+			};
 			//TODO Provider finden
+			if($scope.item.provider != undefined){
 			function findProvider() {
-				  $http.get('/userDetails/').success(function(data) {
-						$scope.id = data.id;
-						$scope.firstName = data.firstName;
-						$scope.marriagePartner = data.marriagePartner;
-						
+						console.log($scope.item)
 						var params = {
 								
-								id : $scope.id
+								id : $scope.item.provider
 						};
 							
-						$http.get('/guests/search/findByUserId', {params : params}).success(
+						$http.get('/provider/search/findById', {params : params}).success(
 								function(data) {
 									if (data._embedded != undefined) {
-										$scope.guests = angular.fromJson(data._embedded.guests);
-										$scope.guests.forEach(function(guest) {
-										    guest.isDisabled = true;
-										})
+										$scope.provider = angular.fromJson(data._embedded.guests);
 										
 									} else {
-										$scope.guests = [];
+										$scope.provider = [];
 									}
 								});
-					})
+					
 					};
 			findProvider();
+			}
 			
-			$scope.ok = function () {
+			$scope.ok = function ok() {
+				console.log($scope.provider)
+				$http.post("/save/newProvider", {
+					name		:	$scope.provider.name,
+					street		:	$scope.provider.street,
+					postalCode	:	$scope.provider.postalCode,
+					town		:	$scope.provider.town,
+					email		:	$scope.provider.email,
+					telephone	:	$scope.provider.telephone,
+					mobilephone	:	$scope.provider.mobilephone,
+					comment		:	$scope.provider.comment
+				}).success(function(data, status, headers) {
+					alert("passt")
+				}).error(function(data, status, headers) {
+					alert("error");
+				});
 			    $uibModalInstance.close($scope.item);
 			  };
 

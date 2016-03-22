@@ -37,6 +37,7 @@ angular.module('budget', [])
 												paid: obj.paid,
 												topic : obj.topic,
 												id: $scope.itemId,
+												provider: obj.providerId,
 												isDisabled : true,
 												showDetails : false})  
 								})

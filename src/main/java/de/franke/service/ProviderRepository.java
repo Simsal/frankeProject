@@ -12,7 +12,7 @@ import de.franke.model.ProviderModel;
 @RepositoryRestResource(collectionResourceRel="provider", path="provider" )
 public interface ProviderRepository  extends CrudRepository<ProviderModel, Long>{
 	
-	List<GuestModel> findByUserId (@Param("id") long id);
+	List<ProviderModel> findById (@Param("id") long id);
 
 }
 
